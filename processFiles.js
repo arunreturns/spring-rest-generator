@@ -75,7 +75,8 @@ function formUpdateQuery(TableName, VariableName, FieldsList) {
 
 module.exports = function doProcessing(ClassName, VariableName, TableName, FieldsList, Callback) {
     var MainPath = "./template";
-    var CopyPath = VariableName;
+    var CopyPath = "./gen/" + VariableName;
+    fs.mkdirsSync(CopyPath);
 
     var recursive = require('recursive-readdir');
 

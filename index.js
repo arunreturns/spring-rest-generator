@@ -1,10 +1,12 @@
 const promptUser = require('./userInput');
 
 const TestData = {
-    ClassName: 'staff',
+    ClassName: 'teacher',
+    TableName: 'TEACHERS',
     FieldsList: {
-        FieldNames: ['staffId', 'staffName', 'dateOfBirth', 'staffRole'],
-        FieldTypes: ['Integer', 'String', 'Date', 'String']
+        FieldNames: ['teacherId', 'teacherName', 'yearsOfExperience', 'dateOfBirth', 'joiningDate'],
+        FieldTypes: ['Integer', 'String', 'String', 'Date', 'Date']
     }
 }
 promptUser(TestData);
+//promptUser();

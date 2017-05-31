@@ -67,7 +67,7 @@ module.exports = function promptUser(TestData) {
     if (TestData) {
         var ClassName = _.startCase(_.toLower(TestData.ClassName))
         var VariableName = ClassName.toLowerCase();
-        var TableName = ClassName.toUpperCase();
+        var TableName = TestData.TableName;
         var TestFieldsList = [];
         TestData.FieldsList.FieldNames.map((Name, index) => {
             TestData.FieldsList.FieldTypes[index];

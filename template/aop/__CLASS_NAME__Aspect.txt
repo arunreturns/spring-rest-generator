@@ -1,8 +1,9 @@
-package app.__VARIABLE_NAME__.aspect;
+package app.__VARIABLE_NAME__.aop;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,7 @@ import app.__VARIABLE_NAME__.dto.__CLASS_NAME__;
 
 @Aspect
 @Component
-public class __CLASS_NAME__AOP {
+public class __CLASS_NAME__Aspect {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private void printArgs(Object[] args){
 		for ( int i = 0; i < args.length; i++){
@@ -26,24 +27,39 @@ public class __CLASS_NAME__AOP {
 		}
 	}
 	
-	@Around("execution(* *(..)) && within(app.__VARIABLE_NAME__..controller..*)")
-	public void controllerAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
-		logger.info("[__CLASS_NAME__ Controller] ==> " + proceedingJoinPoint.getSignature().getName() + ". Printing Args");
-		printArgs(proceedingJoinPoint.getArgs());
-		proceedingJoinPoint.proceed();
+	@Before("execution(* *(..)) && within(app.__VARIABLE_NAME__..controller..*)")
+	public void controllerAdviceBefore(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Enter __CLASS_NAME__ Controller] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
 	}
 	
-	@Around("execution(* *(..)) && within(app.__VARIABLE_NAME__..service..*)")
-	public void serviceAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
-		logger.info("[__CLASS_NAME__ Service] ==> " + proceedingJoinPoint.getSignature().getName() + ". Printing Args");
-		logger.info("Method name " + proceedingJoinPoint.getSignature().getName());
-		proceedingJoinPoint.proceed();
+	@Before("execution(* *(..)) && within(app.__VARIABLE_NAME__..service..*)")
+	public void serviceAdviceBefore(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Enter __CLASS_NAME__ Service] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
 	}
 	
-	@Around("execution(* *(..)) && within(app.__VARIABLE_NAME__..db..*)")
-	public void databaseAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
-		logger.info("[__CLASS_NAME__ DB] ==> " + proceedingJoinPoint.getSignature().getName() + ". Printing Args");
-		printArgs(proceedingJoinPoint.getArgs());
-		proceedingJoinPoint.proceed();
+	@Before("execution(* *(..)) && within(app.__VARIABLE_NAME__..db..*)")
+	public void databaseAdviceBefore(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Enter __CLASS_NAME__ DB] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
+	}
+	
+	@After("execution(* *(..)) && within(app.__VARIABLE_NAME__..controller..*)")
+	public void controllerAdviceAfter(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Leaving __CLASS_NAME__ Controller] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
+	}
+	
+	@After("execution(* *(..)) && within(app.__VARIABLE_NAME__..service..*)")
+	public void serviceAdviceAfter(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Leaving __CLASS_NAME__ Service] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
+	}
+	
+	@After("execution(* *(..)) && within(app.__VARIABLE_NAME__..db..*)")
+	public void databaseAdviceAfter(JoinPoint joinPoint) throws Throwable{
+		logger.info("[Leaving __CLASS_NAME__ DB] ==> " + joinPoint.getSignature().getName());
+		printArgs(joinPoint.getArgs());
 	}
 }

@@ -23,7 +23,7 @@ public class __CLASS_NAME__DBOps implements I__CLASS_NAME__DBOps {
 	@Override
 	public List<__CLASS_NAME__> get__CLASS_NAME__sFromDB() {
 		String query = "SELECT * FROM __TABLE_NAME__";
-		logger.info("Running query " + query + " inside get__CLASS_NAME__sFromDB");
+		logger.info("Running query " + query);
 		List<__CLASS_NAME__> __VARIABLE_NAME__s = namedParameterJdbcTemplate.query(query, new __CLASS_NAME__RowMapper());
 
 		logger.info("__CLASS_NAME__s " + __VARIABLE_NAME__s);
