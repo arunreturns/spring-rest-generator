@@ -1,0 +1,23 @@
+package app.__VARIABLE_NAME__.api;
+
+import java.util.Date;
+import java.util.List;
+
+import app.__VARIABLE_NAME__.dto.__CLASS_NAME__;
+
+public interface I__CLASS_NAME__DBOps {
+	// Get all rows from DB
+	public List<__CLASS_NAME__> get__CLASS_NAME__sFromDB();
+	
+	// Insert a new row into DB
+	public boolean add__CLASS_NAME__InDB(__CLASS_NAME__ __VARIABLE_NAME__);
+	
+	// Get a specific row from DB
+	public __CLASS_NAME__ get__CLASS_NAME__DetailsFromDB(Integer __VARIABLE_NAME__Id);
+	
+	// Update a single row based on ID in DB
+	public boolean update__CLASS_NAME__InDB(Integer __VARIABLE_NAME__Id, __CLASS_NAME__ __VARIABLE_NAME__);
+	
+	// Delete a specific row from DB
+	public boolean delete__CLASS_NAME__ByIDFromDB(Integer __VARIABLE_NAME__Id);
+}

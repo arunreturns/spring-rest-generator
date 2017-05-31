@@ -1,0 +1,18 @@
+{
+  "name": "spring-service-generator",
+  "version": "1.0.0",
+  "description": "A Generator for Spring Boot MVC Rest Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^3.0.1",
+    "inquirer": "^3.0.6",
+    "lodash": "^4.17.4",
+    "recursive-readdir": "^2.2.1"
+  }
+}

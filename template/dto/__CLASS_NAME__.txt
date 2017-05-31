@@ -1,0 +1,9 @@
+package app.__VARIABLE_NAME__.dto;
+
+import java.util.Date;
+
+public class __CLASS_NAME__ {
+    __VARIABLE_CONTENT__
+    __GETTER_SETTER__
+    __TOSTRING_CONTENT__
+}

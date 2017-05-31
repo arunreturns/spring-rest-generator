@@ -1,0 +1,20 @@
+package app.__VARIABLE_NAME__.db;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import app.__VARIABLE_NAME__.dto.__CLASS_NAME__;
+
+public class __CLASS_NAME__RowMapper implements RowMapper<__CLASS_NAME__>{
+
+	@Override
+	public __CLASS_NAME__ mapRow(ResultSet rs, int rowNum) throws SQLException {
+		__CLASS_NAME__ __VARIABLE_NAME__ = new __CLASS_NAME__();
+		__MAP_HERE__
+		
+		return __VARIABLE_NAME__;
+	}
+
+}
