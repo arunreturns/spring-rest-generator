@@ -43,7 +43,7 @@ function formInsertQuery(TableName, VariableName, FieldsList) {
     var ValueList = [];
     var AddList = [];
     FieldsList.map((Field) => {
-        if (Field.fieldName === VariableName)
+        if (Field.fieldName === VariableName + "Id")
             return;
         AddList.push(`.addValue("${Field.fieldName}", ${VariableName}.get${Field.fieldCaps}())`)
         NameList.push(Field.fieldName);
@@ -60,11 +60,10 @@ function formUpdateQuery(TableName, VariableName, FieldsList) {
     var NameList = [];
     var AddList = [];
     FieldsList.map((Field) => {
-        if (Field.fieldName === VariableName)
-            return;
-
         AddList.push(`.addValue("${Field.fieldName}", ${VariableName}.get${Field.fieldCaps}())`)
-        NameList.push(Field.fieldName + " = :" + Field.fieldName);
+        if (Field.fieldName !== VariableName + "Id") {
+            NameList.push(Field.fieldName + " = :" + Field.fieldName);
+        }
     })
     return UpdateQuery
         .replace(/__FIELDS__/g, NameList.join(", "))
@@ -136,7 +135,7 @@ module.exports = function doProcessing(ClassName, VariableName, TableName, Field
                 var newFileName = file.replace('txt', 'java').replace(/__CLASS_NAME__/g, ClassName);
                 fs.move(file, newFileName);
             })
-            Callback();
+            Callback(ClassName);
         });
     });
 }

@@ -60,8 +60,8 @@ var fieldQuestions = [
 ];
 var FieldsList = [];
 
-function ProcessingCallback() {
-    console.log("Process completed successfully");
+function ProcessingCallback(ClassName) {
+    console.log("Process completed successfully for " + ClassName);
 }
 module.exports = function promptUser(TestData) {
     if (TestData) {
